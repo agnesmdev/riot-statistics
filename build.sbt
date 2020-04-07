@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
   )
 
 resolvers += Resolver.bintrayRepo("tmacedo", "maven")
+javaOptions in Test += "-Dconfig.file=conf/application.test.conf"
 
 libraryDependencies ++= {
   Seq(
