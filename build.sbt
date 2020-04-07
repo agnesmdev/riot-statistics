@@ -1,5 +1,5 @@
 name := "riot-statistics"
-normalizedName := "Riot Statistics"
+normalizedName := "RiotStatistics"
 organization := "dev.agnesm"
 
 version := "1.0.0"

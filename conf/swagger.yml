@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "LoL Statistics"
+  title: "RiotStatistics"
   description: "This API offers some statistics for LoL players"
 produces:
   - application/json
