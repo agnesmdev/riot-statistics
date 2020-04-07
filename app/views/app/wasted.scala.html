@@ -1,0 +1,12 @@
+@(wastedTime: WastedTime)
+
+<h3>Dear summoner @{wastedTime.summonerName},</h3>
+
+<p>You have wasted so much time on LoL... @{wastedTime.numberOfGames} games since @{wastedTime.begin.toLocalDate}!</p>
+
+<p>It represents <b color="red">@{wastedTime.gameTime.total}</b> seconds of your life, in others terms:
+<b color="red">@{wastedTime.gameTime.days}</b> days, <b color="red">@{wastedTime.gameTime.hours}</b>
+hours, <b color="red">@{wastedTime.gameTime.minutes}</b> and <b color="red">@{wastedTime.gameTime.seconds}</b>
+seconds...</p>
+
+<p>That's a lot bro.</p>

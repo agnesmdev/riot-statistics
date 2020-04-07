@@ -1,0 +1,9 @@
+{
+    "id": "id",
+    "accountId": "accountId",
+    "puuid": "puuid",
+    "name": "Summoner",
+    "profileIconId": 1234,
+    "revisionDate": 1586109816000,
+    "summonerLevel": 100
+}

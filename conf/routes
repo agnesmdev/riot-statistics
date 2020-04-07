@@ -1,8 +1,56 @@
 ### NoDocs ###
-GET    /swagger                              controllers.ApplicationController.swagger
+GET    /swagger                                            controllers.ApplicationController.swagger
 
 ### NoDocs ###
-GET    /docs/swagger-ui/*file                 controllers.Assets.at(path:String="/public/lib/swagger-ui", file: String)
+GET    /docs/swagger-ui/*file                              controllers.Assets.at(path:String="/public/lib/swagger-ui", file: String)
 
 ### NoDocs ###
-GET    /assets/*file                          controllers.Assets.versioned(path="/public", file: Asset)
+GET    /assets/*file                                       controllers.Assets.versioned(path="/public", file: Asset)
+
+ ###
+ #  summary: Get information on the application
+ #  tags:
+ #    - info
+ #  responses:
+ #    '200':
+ #      description: Information on the application
+ ###
+GET    /status                                             controllers.ApplicationController.status
+
+ ###
+ #  summary: Get wasted time on LoL
+ #  consumes:
+ #    - text/plain
+ #  produces:
+ #    - application/json
+ #  parameters:
+ #    - in: path
+ #      name: name
+ #      description: The summoner name
+ #      type: string
+ #      required: true
+ #    - in: path
+ #      name: region
+ #      description: The region where the summoner plays
+ #      type: string
+ #      required: true
+ #    - in: body
+ #      name: email
+ #      description: Email address to send wasted time
+ #      type: string
+ #      required: true
+ #  tags:
+ #    - time
+ #  responses:
+ #    '202':
+ #      description: Estimated time to compute
+ #    '400':
+ #      description: Invalid input
+ #    '404':
+ #      description: Unknown player
+ #    '500':
+ #      description: Unexpected error
+ #    '503':
+ #      description: Unavailable external service
+ ###
+POST   /summoners/:name/regions/:region/wasted             controllers.RiotController.getWastedTime(name, region)

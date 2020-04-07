@@ -20,7 +20,7 @@
     </appender>
 
     <logger name="play" level="INFO" />
-    <logger name="spa.pets" level="DEBUG" />
+    <logger name="riot.statistics" level="DEBUG" />
     <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
 
     <root level="WARN">

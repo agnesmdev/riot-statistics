@@ -1,7 +1,10 @@
 package exceptions
 
-import java.util.UUID
-
 sealed class FunctionalException(m: String, c: Throwable) extends Exception(m, c)
 
-case class NotFoundException(id: UUID) extends FunctionalException(s"Element with id $id does not exist", null)
+case class NotFoundException(element: String) extends FunctionalException(s"$element does not exist", null)
+
+case class MissingParameterException(parameter: String) extends FunctionalException(s"Missing parameter: $parameter", null)
+
+case class InvalidJsonException(error: String) extends FunctionalException(s"Invalid json input, error: $error", null)
+

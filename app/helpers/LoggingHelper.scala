@@ -4,5 +4,5 @@ import play.api.Logger
 
 trait LoggingHelper {
 
-  val logger: Logger = Logger("lol.statistics")
+  val logger: Logger = Logger("riot.statistics")
 }
