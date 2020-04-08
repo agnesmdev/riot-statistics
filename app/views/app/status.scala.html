@@ -1,4 +1,4 @@
-@(name: String, normalizedName: String, version: String, scalaVersion: String, sbtVersion: String)
+@(name: String, normalizedName: String, version: String, scalaVersion: String, sbtVersion: String, gitHeadCommit: Option[String])
 
 <h1>@normalizedName</h1>
 
@@ -7,4 +7,5 @@
     <li><b>Version:</b> @version</li>
     <li><b>Scala Version:</b> @scalaVersion</li>
     <li><b>SBT Version:</b> @sbtVersion</li>
+    <li><b>Last commit:</b> @{gitHeadCommit.getOrElse("-")}</li>
 </ul>

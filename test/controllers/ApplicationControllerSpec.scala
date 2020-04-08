@@ -49,7 +49,8 @@ class ApplicationControllerSpec extends PlaySpec with MockitoSugar with ScalaFut
         BuildInfo.normalizedName,
         BuildInfo.version,
         BuildInfo.scalaVersion,
-        BuildInfo.sbtVersion
+        BuildInfo.sbtVersion,
+        BuildInfo.gitHeadCommit
       ).toString()
     }
 
@@ -64,7 +65,8 @@ class ApplicationControllerSpec extends PlaySpec with MockitoSugar with ScalaFut
         "normalizedName" -> BuildInfo.normalizedName,
         "version" -> BuildInfo.version,
         "scalaVersion" -> BuildInfo.scalaVersion,
-        "sbtVersion" -> BuildInfo.sbtVersion
+        "sbtVersion" -> BuildInfo.sbtVersion,
+        "gitHeadCommit" -> BuildInfo.gitHeadCommit
       )
     }
   }

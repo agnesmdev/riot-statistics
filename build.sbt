@@ -8,9 +8,9 @@ scalaVersion := "2.12.10"
 swaggerDomainNameSpaces := Seq("models")
 
 lazy val root = (project in file("."))
-  .enablePlugins(PlayScala, BuildInfoPlugin, SwaggerPlugin, SbtTwirl)
+  .enablePlugins(PlayScala, BuildInfoPlugin, SwaggerPlugin, SbtTwirl, GitVersioning)
   .settings(
-    buildInfoKeys := Seq[BuildInfoKey](name, normalizedName, version, scalaVersion, sbtVersion)
+    buildInfoKeys := Seq[BuildInfoKey](name, normalizedName, version, scalaVersion, sbtVersion, git.gitHeadCommit)
   )
 
 resolvers += Resolver.bintrayRepo("tmacedo", "maven")
