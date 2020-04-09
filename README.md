@@ -7,6 +7,9 @@ This API allows to get some player statistics like:
 
 (non-exhaustive list)
 
+:warning: *It seems match history for normal games is limited to a duration of 2 years*
+:warning: *It seems match history for TFT games is limited to last 200 games*
+
 For now, only the following regions are supported:
 * EUW
 * NA

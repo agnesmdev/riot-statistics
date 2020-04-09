@@ -13,8 +13,8 @@ case class MatchList(totalGames: Int,
 
 case class MatchInfo(gameId: Long,
                      champion: Int,
-                     role: String,
-                     lane: String,
+                     role: Option[String],
+                     lane: Option[String],
                      timestamp: Long)
 
 case class Match(gameId: Long,

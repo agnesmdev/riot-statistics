@@ -22,7 +22,7 @@ GET    /status                                             controllers.Applicati
  #  consumes:
  #    - text/plain
  #  produces:
- #    - application/json
+ #    - text/plain
  #  parameters:
  #    - in: path
  #      name: name

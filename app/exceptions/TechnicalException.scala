@@ -2,7 +2,9 @@ package exceptions
 
 sealed class TechnicalException(m: String, c: Throwable) extends Exception(m, c)
 
-case class ApiException(status: Int, body: String) extends TechnicalException(s"status: $status, body: $body", null)
+case class ApiException(status: Int, body: String) extends TechnicalException(s"status: $status, body: $body", null) {
+  lazy val canBeRetried: Boolean = status >= 500
+}
 
 case class TooManyRequestsException(message: String) extends TechnicalException(message, null)
 

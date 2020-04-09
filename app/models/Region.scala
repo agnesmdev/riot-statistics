@@ -1,6 +1,25 @@
 package models
 
-sealed trait Region {
+sealed trait GlobalRegion {
+
+  def globalValue: String
+
+  def globalHost: String
+}
+
+sealed trait EuropeRegion extends GlobalRegion {
+  override val globalValue: String = "EUROPE"
+
+  override val globalHost: String = "riot.api.europe.host"
+}
+
+sealed trait AmericaRegion extends GlobalRegion {
+  override val globalValue: String = "AMERICAS"
+
+  override val globalHost: String = "riot.api.americas.host"
+}
+
+sealed trait Region extends GlobalRegion {
 
   def value: String
 
@@ -9,13 +28,13 @@ sealed trait Region {
   override def toString: String = value
 }
 
-case object EuwRegion extends Region {
+case object EuwRegion extends Region with EuropeRegion {
   override val value: String = "EUW"
 
   override val host: String = "riot.api.euw.host"
 }
 
-case object NaRegion extends Region {
+case object NaRegion extends Region with AmericaRegion {
   override val value: String = "NA"
 
   override val host: String = "riot.api.na.host"

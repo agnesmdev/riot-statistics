@@ -21,13 +21,15 @@ class DragonApiImpl @Inject()(apiClient: DragonApiClient)(implicit ec: Execution
   override def getChampions: Future[Seq[Champion]] = {
     logger.debug("Getting champions from Data Dragon")
 
-    apiClient.getChampions.get().map {
-      case response if response.status == Status.OK =>
-        val champions = Champion.parse(response.json)
+    apiClient.getChampions.get().map { response =>
+      response.status match {
+        case Status.OK =>
+          val champions = Champion.parse(response.json)
 
-        logger.debug(s"Successfully got ${champions.length} champions from Data Dragon")
-        champions
-      case response => throw ApiException(response.status, response.body)
+          logger.debug(s"Successfully got ${champions.length} champions from Data Dragon")
+          champions
+        case status => throw ApiException(status, response.body)
+      }
     }
   }
 }

@@ -7,10 +7,17 @@ import play.api.libs.json.{Json, Writes}
 
 import scala.concurrent.duration._
 
+sealed trait MatchType
+
+object NormalType extends MatchType
+
+object TFTType extends MatchType
+
 case class WastedTime(summonerName: String,
                       numberOfGames: Int,
                       gameTime: TimeData,
-                      begin: LocalDateTime) {
+                      begin: LocalDateTime,
+                      matchType: MatchType) {
   lazy val isEmpty: Boolean = numberOfGames == 0
 }
 
@@ -38,18 +45,9 @@ object TimeData {
 }
 
 object WastedTime {
-  def apply(summonerName: String, matches: Seq[Match]): WastedTime = matches match {
-    case Nil => empty(summonerName)
-    case _ =>
-      val gameTotal = matches.map(_.gameDuration).sum
-      val begin = LocalDateTime.ofEpochSecond(matches.minBy(_.gameCreation).gameCreation, 0, UTC)
-
-      WastedTime(summonerName, matches.length, TimeData(gameTotal), begin)
+  def empty(summonerName: String, matchType: MatchType): WastedTime = {
+    WastedTime(summonerName, 0, TimeData.empty, LocalDateTime.now(UTC), matchType)
   }
-
-  def empty(summonerName: String): WastedTime = WastedTime(summonerName, 0, TimeData.empty, LocalDateTime.now(UTC))
-
-  implicit val jsonWrites: Writes[WastedTime] = Json.writes[WastedTime]
 }
 
 
