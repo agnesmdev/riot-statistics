@@ -1,11 +1,132 @@
 @(name: String, normalizedName: String, version: String, scalaVersion: String, sbtVersion: String, gitHeadCommit: Option[String])
 
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Mate+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/main.css">
+
+  <title>@normalizedName - Status</title>
+</head>
+<body>
+
 <h1>@normalizedName</h1>
 
-<ul>
-    <li><b>Project Name:</b> @name</li>
-    <li><b>Version:</b> @version</li>
-    <li><b>Scala Version:</b> @scalaVersion</li>
-    <li><b>SBT Version:</b> @sbtVersion</li>
-    <li><b>Last commit:</b> @{gitHeadCommit.getOrElse("-")}</li>
-</ul>
+<table class="header">
+    <tr class="title">
+        <td width="10px"></td>
+        <td><span class="check-ok">&#10003;</span> &nbsp; INTERNAL API<td>
+    </tr>
+    <tr class="content">
+        <td></td>
+        <td>
+            <table>
+              <tr>
+                  <th>PROJECT NAME</th>
+                  <th>VERSION</th>
+                  <th>SCALA VERSION</th>
+                  <th>SBT VERSION</th>
+                  <th>LAST COMMIT</th>
+                  <th>AVAILABILITY</th>
+              </tr>
+              <tr>
+                  <td>@{name.toUpperCase}</td>
+                  <td>@version</td>
+                  <td>@scalaVersion</td>
+                  <td>@sbtVersion</td>
+                  <td>@{gitHeadCommit.getOrElse("-")}</td>
+                  <td class="check-ok">&#10003;</td>
+              </tr>
+            </table>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+<table class="header">
+    <tr class="title">
+        <td width="10px"></td>
+        <td><span class="check-ok">&#10003;</span> &nbsp; RIOT API<td>
+    </tr>
+    <tr class="content">
+        <td></td>
+        <td>
+            <table>
+              <tr>
+                  <th>RESOURCE</th>
+                  <th>VERSION</th>
+                  <th>REGIONS</th>
+                  <th>AVAILABILITY</th>
+              </tr>
+              <tr>
+                  <td>SUMMONER</td>
+                  <td>V4</td>
+                  <td>EUW<br>NA</td>
+                  <td class="check-ok">&#10003;</td>
+              </tr>
+              <tr>
+                  <td>MATCH</td>
+                  <td>V4</td>
+                  <td>EUW<br>NA</td>
+                  <td class="check-ok">&#10003;</td>
+              </tr>
+              <tr>
+                  <td>TFT-MATCH</td>
+                  <td>V1</td>
+                  <td>EUROPE<br>AMERICAS</td>
+                  <td class="check-ok">&#10003;</td>
+              </tr>
+            </table>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+<table class="header">
+    <tr class="title">
+        <td width="10px"></td>
+        <td><span class="check-ok">&#10003;</span> &nbsp; EXTERNAL SERVICES<td>
+    </tr>
+    <tr class="content">
+        <td></td>
+        <td>
+            <table>
+              <tr>
+                  <th>RESOURCE</th>
+                  <th>VERSION</th>
+                  <th>AVAILABILITY</th>
+              </tr>
+              <tr>
+                  <td>MAILJET</td>
+                  <td>4.2.1</td>
+                  <td class="check-ok">&#10003;</td>
+              </tr>
+            </table>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+<script>
+var acc = document.getElementsByClassName("title");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "table-row") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "table-row";
+    }
+  });
+}
+</script>
+
+</body>
+</html>

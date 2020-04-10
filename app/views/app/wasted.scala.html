@@ -1,33 +1,64 @@
 @(wastedTime: WastedTime, tftWastedTime: WastedTime)
 
-<h3>Dear summoner @{wastedTime.summonerName},</h3>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Mate+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/main.css">
 
-@if(wastedTime.isEmpty) {
-    <p>You have no match records... at least for the two past years.
-    <br>
-    That's nice. Keep going.</p>
-} else {
-    <p>You have wasted so much time on LoL... @{wastedTime.numberOfGames} games since @{wastedTime.begin.toLocalDate.toString}!
-    <br>
-    It represents <b style="color: red">@{wastedTime.gameTime.total}</b> seconds of your life, in others terms:
-        <b style="color: red">@{wastedTime.gameTime.days}</b> days, <b style="color: red">@{wastedTime.gameTime.hours}</b>
-        hours, <b style="color: red">@{wastedTime.gameTime.minutes}</b> and <b style="color: red">@{wastedTime.gameTime.seconds}</b>
-        seconds...
-    <br>
-    That's a lot bro.</p>
-}
+    <title>Wasted time on LoL for @{wastedTime.summonerName}</title>
+</head>
+<body>
 
-@if(tftWastedTime.isEmpty) {
-    <p>You have no TFT match records... at least for the two past years.
-    <br>
-    Well, I guess that's cool.</p>
-} else {
-    <p>So many games you made on TFT... @{tftWastedTime.numberOfGames} games since @{tftWastedTime.begin.toLocalDate.toString}!
-    <br>
-    It represents <b style="color: red">@{tftWastedTime.gameTime.total}</b> seconds of your life, in others terms:
-        <b style="color: red">@{tftWastedTime.gameTime.days}</b> days, <b style="color: red">@{tftWastedTime.gameTime.hours}</b>
-        hours, <b style="color: red">@{tftWastedTime.gameTime.minutes}</b> and <b style="color: red">@{tftWastedTime.gameTime.seconds}</b>
-        seconds...
-    <br>
-    Well done.</p>
-}
+<div class="mail">
+    <div class="mail-header"><img src="/assets/images/wasted.png"></div>
+    <h1>Dear summoner @{wastedTime.summonerName},</h1>
+
+    <div class="mail-content">
+        @if(wastedTime.isEmpty) {
+        <p>You have no match records... at least for the two past years.</p>
+        <p>That's nice. Keep going.</p>
+        } else {
+        <p>You have wasted so much time on LoL... <span class="focus">@{wastedTime.numberOfGames}</span> games since @{wastedTime.begin.toLocalDate.toString}!</p>
+        <p>It represents @{wastedTime.gameTime.total} seconds of your life, in others terms:
+        <p class="focus">@{wastedTime.gameTime.days} days, @{wastedTime.gameTime.hours}
+        hours, @{wastedTime.gameTime.minutes} and @{wastedTime.gameTime.seconds}
+        seconds...</p>
+        <p>That's a lot bro.</p>
+        }
+    </div>
+
+    <div class="mail-content">
+        @if(tftWastedTime.isEmpty) {
+        <p>You have no TFT match records... at least for the two past years.</p>
+        <p>Well, I guess that's cool.</p>
+        } else {
+        <p>So many games you made on TFT... @{tftWastedTime.numberOfGames} games since @{tftWastedTime.begin.toLocalDate.toString}!</p>
+        <p>It represents @{tftWastedTime.gameTime.total} seconds of your life, in others terms:</p>
+        <p class="focus">@{tftWastedTime.gameTime.days} days, @{tftWastedTime.gameTime.hours}
+        hours, @{tftWastedTime.gameTime.minutes} and @{tftWastedTime.gameTime.seconds}
+        seconds...</p>
+        <p>Well done.</p>
+        }
+    </div>
+
+    <div class="mail-footer">
+        <table class="no-border">
+            <tr>
+                <td class="no-border"></td>
+                <td class="no-border"><a href="https://twitter.com/maury_agnes" target="_blank" class="fa fa-twitter"></a></td>
+                <td class="no-border"><a href="https://github.com/agnesmdev/riot-statistics" target="_blank" class="fa fa-github"></a></td>
+                <td class="no-border"><a href="http://agnesm.dev/" target="_blank" class="fa fa-globe"></a></td>
+                <td class="no-border"><a href="https://www.linkedin.com/in/agnes-maury/" target="_blank" class="fa fa-linkedin"></a></td>
+                <td class="no-border"></td>
+            </tr>
+            <tr>
+                <td class="no-border" colspan="6">&#64;2020 Agnès M.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

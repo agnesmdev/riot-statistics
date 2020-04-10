@@ -13,3 +13,7 @@ This API allows to get some player statistics like:
 For now, only the following regions are supported:
 * EUW
 * NA
+
+# Credits
+
+Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from www.flaticon.com
