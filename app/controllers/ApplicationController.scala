@@ -22,8 +22,8 @@ class ApplicationController @Inject()(cc: ControllerComponents, ws: WSClient)
         BuildInfo.version,
         BuildInfo.scalaVersion,
         BuildInfo.sbtVersion,
-        BuildInfo.gitHeadCommit)
-      )
+        BuildInfo.gitHeadCommit
+      ))
       case Accepts.Json() => Ok(Json.obj(
         "name" -> BuildInfo.name,
         "normalizedName" -> BuildInfo.normalizedName,
