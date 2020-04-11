@@ -28,6 +28,7 @@ class MailjetServiceSpec extends PlaySpec with MockitoSugar with ScalaFutures wi
 
   val email = "test@dmail.com"
   val name = "Test"
+  val host = "host"
 
   val summonerEmail = "summoner@dmail.com"
 
@@ -39,6 +40,7 @@ class MailjetServiceSpec extends PlaySpec with MockitoSugar with ScalaFutures wi
   val configuration: Configuration = mock[Configuration]
   when(configuration.get[String]("mailjet.api.from.email")).thenReturn(email)
   when(configuration.get[String]("mailjet.api.from.name")).thenReturn(name)
+  when(configuration.get[String]("api.host")).thenReturn(host)
 
   val mailjetService = new MailjetServiceImpl(client, configuration)
 
@@ -107,6 +109,6 @@ class MailjetServiceSpec extends PlaySpec with MockitoSugar with ScalaFutures wi
 
     message.get(Message.SUBJECT) mustEqual "Wasted Time on LoL"
     message.get(Message.TEXTPART) mustEqual ""
-    message.get(Message.HTMLPART) mustEqual views.html.app.wasted(wastedTime, tftWastedTime).toString()
+    message.get(Message.HTMLPART) mustEqual views.html.app.wasted(wastedTime, tftWastedTime)(host).toString()
   }
 }

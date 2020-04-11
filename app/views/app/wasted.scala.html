@@ -1,60 +1,55 @@
-@(wastedTime: WastedTime, tftWastedTime: WastedTime)
+@(wastedTime: WastedTime, tftWastedTime: WastedTime)(self: String)
 
 <html>
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Mate+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/main.css">
-
-    <title>Wasted time on LoL for @{wastedTime.summonerName}</title>
-</head>
-<body>
+<body style="font-size: 15px;">
 
 <div class="mail">
-    <div class="mail-header"><img src="/assets/images/wasted.png"></div>
-    <h1>Dear summoner @{wastedTime.summonerName},</h1>
+    <div style="background-color: #141414; width: 100%; text-align: center;"><img src="@self/assets/images/wasted.png"></div>
+    <h1 style="font-size: 30px; font-weight: lighter; color: #757575; padding-left: 15px; padding-right: 15px;">Dear summoner @{wastedTime.summonerName},</h1>
 
-    <div class="mail-content">
+    <div style="padding-left: 15px; padding-right: 15px;">
         @if(wastedTime.isEmpty) {
-        <p>You have no match records... at least for the two past years.</p>
-        <p>That's nice. Keep going.</p>
+        <p style="margin: 0;">You have no match records... at least for the two past years.</p>
+        <p style="margin: 0;">That's nice. Keep going.</p>
         } else {
-        <p>You have wasted so much time on LoL... <span class="focus">@{wastedTime.numberOfGames}</span> games since @{wastedTime.begin.toLocalDate.toString}!</p>
-        <p>It represents @{wastedTime.gameTime.total} seconds of your life, in others terms:
-        <p class="focus">@{wastedTime.gameTime.days} days, @{wastedTime.gameTime.hours}
+        <p style="margin: 0;">You have wasted so much time on LoL... <b style="color: #D90429">@{wastedTime.numberOfGames}</b> games since @{wastedTime.begin.toLocalDate.toString}!</p>
+        <p style="margin: 0;">It represents @{wastedTime.gameTime.total} seconds of your life, in others terms:
+        <p style="color: #D90429; font-weight: bold; font-size: 18px; text-align: center;">@{wastedTime.gameTime.days} days, @{wastedTime.gameTime.hours}
         hours, @{wastedTime.gameTime.minutes} and @{wastedTime.gameTime.seconds}
         seconds...</p>
-        <p>That's a lot bro.</p>
+        <p style="margin: 0;">That's a lot bro.</p>
         }
     </div>
 
-    <div class="mail-content">
+    <div style="padding-left: 15px; padding-right: 15px;">
         @if(tftWastedTime.isEmpty) {
-        <p>You have no TFT match records... at least for the two past years.</p>
+        <p style="margin: 0;">You have no TFT match records... at least for the two past years.</p>
         <p>Well, I guess that's cool.</p>
         } else {
-        <p>So many games you made on TFT... @{tftWastedTime.numberOfGames} games since @{tftWastedTime.begin.toLocalDate.toString}!</p>
-        <p>It represents @{tftWastedTime.gameTime.total} seconds of your life, in others terms:</p>
-        <p class="focus">@{tftWastedTime.gameTime.days} days, @{tftWastedTime.gameTime.hours}
+        <p style="margin: 0;">So many games you made on TFT... <b style="color: #D90429">@{tftWastedTime.numberOfGames}</b> games since @{tftWastedTime.begin.toLocalDate.toString}!</p>
+        <p style="margin: 0;">It represents @{tftWastedTime.gameTime.total} seconds of your life, in others terms:</p>
+        <p style="color: #D90429; font-weight: bold; font-size: 18px; text-align: center;">@{tftWastedTime.gameTime.days} days, @{tftWastedTime.gameTime.hours}
         hours, @{tftWastedTime.gameTime.minutes} and @{tftWastedTime.gameTime.seconds}
         seconds...</p>
         <p>Well done.</p>
         }
     </div>
 
-    <div class="mail-footer">
-        <table class="no-border">
+    <div style="background-color: #141414; padding: 5px; text-align: center;">
+        <table style="border: none; color: white; width: 100%; text-align: center;">
             <tr>
-                <td class="no-border"></td>
-                <td class="no-border"><a href="https://twitter.com/maury_agnes" target="_blank" class="fa fa-twitter"></a></td>
-                <td class="no-border"><a href="https://github.com/agnesmdev/riot-statistics" target="_blank" class="fa fa-github"></a></td>
-                <td class="no-border"><a href="http://agnesm.dev/" target="_blank" class="fa fa-globe"></a></td>
-                <td class="no-border"><a href="https://www.linkedin.com/in/agnes-maury/" target="_blank" class="fa fa-linkedin"></a></td>
-                <td class="no-border"></td>
+                <td style="border: none; color: white;"></td>
+                <td style="border: none; color: white;"><a href="https://twitter.com/maury_agnes" target="_blank"><img src="@self/assets/images/twitter.png"></a></td>
+                <td style="border: none; color: white;"><a href="https://github.com/agnesmdev/riot-statistics" target="_blank"><img src="@self/assets/images/github.png"></a></td>
+                <td style="border: none; color: white;"><a href="http://agnesm.dev/" target="_blank"><img src="@self/assets/images/worldwide.png"></a></td>
+                <td style="border: none; color: white;"><a href="https://www.linkedin.com/in/agnes-maury/" target="_blank"><img src="@self/assets/images/linkedin.png"></a></td>
+                <td style="border: none; color: white;"></td>
             </tr>
             <tr>
-                <td class="no-border" colspan="6">&#64;2020 Agnès M.</td>
+                <td style="border: none; color: white; font-size: 12px;" colspan="6">&#64;2020 Agnès M.</td>
+            </tr>
+            <tr>
+                <td style="border: none; color: white; font-size: 10px;" colspan="6">Icon made by <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a> from www.flaticon.com</td>
             </tr>
         </table>
     </div>

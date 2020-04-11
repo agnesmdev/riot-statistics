@@ -27,12 +27,14 @@ class MailjetServiceImpl @Inject()(client: MailjetClient, configuration: Configu
   private val fromName: String = configuration.get[String]("mailjet.api.from.name")
   private val fromParty = EmailParty(fromEmail, fromName)
 
+  private val apiHost: String = configuration.get[String]("api.host")
+
   private val wastedTimeSubject = "Wasted Time on LoL"
 
   override def sendWastedTime(wastedTime: WastedTime, tftWastedTime: WastedTime, emailAddress: String): Future[Boolean] = Future {
     logger.debug(s"Sending email with wasted time info for summoner ${wastedTime.summonerName} to $emailAddress")
 
-    val content = views.html.app.wasted(wastedTime, tftWastedTime).toString()
+    val content = views.html.app.wasted(wastedTime, tftWastedTime)(apiHost).toString()
 
     val email = Email(fromParty, EmailParty(emailAddress, wastedTime.summonerName), wastedTimeSubject, "", content)
     val request = new MailjetRequest(Emailv31.resource).property(Emailv31.MESSAGES, new JSONArray().put(email.toJSONObject))
